@@ -27,7 +27,7 @@ const HomeHeader = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/create">
+                <Link className="nav-link" to="/register">
                   Signup
                 </Link>
               </li>

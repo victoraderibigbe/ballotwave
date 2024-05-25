@@ -1,7 +1,8 @@
 import React from "react";
-import Footer from "./Footer";
+import Footer from "./FooterPage";
+import { Link } from "react-router-dom";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <div className="container-fluid mt-top px-0">
@@ -9,7 +10,7 @@ const Home = () => {
           <p className="text-light fs-3 fw-bold">
             Give Your Important Vote Made The Pure Country
           </p>
-          <button className="btn   py-2 px-5">VOTE NOW!</button>
+          <button className="btn py-2 px-5"><Link className="text-decoration-none text-white" to="/register"> VOTE NOW!</Link></button>
           <p className="text-light mt-2">MAY 27 - MAY 30</p>
         </div>
         <div className="col-12 img-h"></div>
@@ -77,15 +78,16 @@ const Home = () => {
                 alt=""
               />
             </div>
-            <div className="col-md-6 col-12 px-md-4">
+            <div style={{color:"gray"}} className="col-md-6 col-12 px-md-4">
               <div className="d-flex gap-2 mt-3 ">
-                <p className="fw-bold fs-5">Why Choose Us </p>
+                <p className="fw-bold text-dark fs-5">Why Choose Us </p>
                 <div className="col-md-2 col-4 rounded ms-md-2 bg-success get-w"></div>
               </div>
-              <p className="fw-bold col-md-9 mt-2">
+              <p className="fw-bold text-dark col-md-9 mt-2">
                 Leadership is the trusted & powerful
                 <span className="text-success"> political team.</span>
               </p>
+              
               Leadership represents the culmination of experience, integrity,
               and vision. It is the ability to navigate through the complexities
               of governance with wisdom and responsibility, earning the trust
@@ -109,4 +111,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
