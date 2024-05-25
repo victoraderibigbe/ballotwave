@@ -1,9 +1,13 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
     <>
-      <h1>Welcome to BallotWave 😊</h1>
+      <Routes>
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
     </>
   );
 }
