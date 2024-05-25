@@ -1,9 +1,16 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Layout from "./components/Layout";
+import Home from "./Pages/Home";
 
 function App() {
   return (
     <>
-      <h1>Welcome to BallotWave 😊</h1>
+      <Routes>
+        <Route element={<Layout/>}>
+        <Route path="/" element={<Home/>}/>
+        </Route>
+      </Routes>
     </>
   );
 }
