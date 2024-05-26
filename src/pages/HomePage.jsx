@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "./FooterPage";
 import { Link } from "react-router-dom";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const HomePage = () => {
+    
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease",
+      once: true,
+    });
+  }, []);
   return (
     <>
       <div className="container-fluid mt-top px-0">
-        <div className="border border-light text-center py-3  rounded get-position col-md-4 col-12 ">
+        <div  data-aos="zoom-in" className="border border-light text-center py-3 mx-auto  rounded get-position col-md-4 col-12 ">
           <p className="text-light fs-3 fw-bold">
             Give Your Important Vote Made The Pure Country
           </p>
@@ -16,7 +25,8 @@ const HomePage = () => {
         <div className="col-12 img-h"></div>
         <section className="position-top">
           <div className="px-md-5 px-4 d-md-flex justify-content-around mb-4 mx-auto ">
-            <div className="card12 col-md-3 rounded">
+            <div data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom" className="card12 col-md-3 rounded">
               <div className="card12-img">
                 <img
                   src="https://img.freepik.com/free-photo/top-view-paper-style-voting-arrangement_23-2149095481.jpg?t=st=1716647107~exp=1716650707~hmac=5668b17270f7678e0215bb15ce3fbd95a559f48a39c0759a7f42525000819e98&w=740"
@@ -33,7 +43,8 @@ const HomePage = () => {
                 </p>
               </div>
             </div>
-            <div className="card12  col-md-3 mt-4 mt-md-0 rounded">
+            <div data-aos="fade-up"
+     data-aos-anchor-placement="center-center" className="card12  col-md-3 mt-4 mt-md-0 rounded">
               <div className="card12-img">
                 <img
                   src="https://img.freepik.com/premium-vector/vote-word-green-checkmark-symbol-election-design-vector-illustration_685751-552.jpg?w=740"
@@ -50,7 +61,8 @@ const HomePage = () => {
                 </p>
               </div>
             </div>
-            <div className="card12  col-md-3 mt-4 mt-md-0 rounded">
+            <div data-aos="fade-up"
+     data-aos-anchor-placement="bottom-center" className="card12  col-md-3 mt-4 mt-md-0 rounded">
               <div className="card12-img">
                 <img
                   src="https://img.freepik.com/free-photo/multiethnic-group-hands-raised_53876-14326.jpg?t=st=1716647265~exp=1716650865~hmac=8a1a63ce160e73260971749c22a533d6dcb002792c877f414d845d4b3a8d574d&w=740"
@@ -70,7 +82,7 @@ const HomePage = () => {
         </section>
 
         <section>
-          <div className="d-md-flex mt-5 px-md-5 px-3">
+          <div data-aos="zoom-out-down" className="d-md-flex gap-md-3 mt-5 px-md-5 px-3">
             <div className="col-md-6 py-4">
               <img
                 className="col-12 mt-5 img-height rounded "
@@ -78,7 +90,7 @@ const HomePage = () => {
                 alt=""
               />
             </div>
-            <div style={{color:"gray"}} className="col-md-6 col-12 px-md-4">
+            <div  data-aos="zoom-out-down" style={{color:"gray"}} className="col-md-6 get-blur col-12 px-md-4">
               <div className="d-flex gap-2 mt-3 ">
                 <p className="fw-bold text-dark fs-5">Why Choose Us </p>
                 <div className="col-md-2 col-4 rounded ms-md-2 bg-success get-w"></div>

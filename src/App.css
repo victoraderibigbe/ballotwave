@@ -10,7 +10,8 @@
 }
 .get-position {
     position: absolute;
-    left: 50%;
+    left: 0%;
+    right:0%;
     height: 40vh;
     top: 40%;
     transform: translateX(-50%);
@@ -109,6 +110,10 @@
   .logo-height{
     border-radius: 100px;
     height: 9vh;
+  }
+  .get-blur{
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
   }
 @media (max-width:688px) {
 
