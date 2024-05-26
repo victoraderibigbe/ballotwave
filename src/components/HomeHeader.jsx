@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
 const HomeHeader = () => {
+
+
   return (
     <>
       <nav className="navbar fw-bold shadow navbar-expand-lg fixed-top px-md-5 bg-body-tertiary">
