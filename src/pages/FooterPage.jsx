@@ -7,7 +7,10 @@ const FooterPage = () => {
           <div className="container">
             <div className="row">
               <div className="col-md-4">
-                <h5>About BallotWave</h5>
+                <div className='d-flex gap-2 mb-2'>
+              <img src="https://img.freepik.com/premium-vector/modern-unique-hexagon-letter-bw-logo-design-template-elegant-initial-bw-letter-logo-concept_1101554-432.jpg?w=740" className="logo-height" alt="" />
+                <h5 className='mt-2'>About BallotWave</h5>
+                </div>
                 <p>
                   BallotWave is dedicated to empowering communities and driving
                   positive change through engagement and advocacy.

@@ -106,6 +106,10 @@
   .img-height{
     height: 63vh;
   }
+  .logo-height{
+    border-radius: 100px;
+    height: 9vh;
+  }
 @media (max-width:688px) {
 
    .img-h{
