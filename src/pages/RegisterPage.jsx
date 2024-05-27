@@ -1,4 +1,6 @@
+import axios from "axios";
 import { useFormik } from "formik";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 
 const RegisterPage = () => {
@@ -22,14 +24,35 @@ const RegisterPage = () => {
     },
     onSubmit: (values) => {
       console.log(values);
+
+      delete values.confirmPassword;
+
+      console.log(values);
+
+      axios
+        .post("http://localhost:3000/user/register", values)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     validationSchema: yup.object({
       firstName: yup.string().required("First name is required"),
       lastName: yup.string().required("Last name is required"),
       email: yup.string().email("Invalid Email").required("Email is required"),
-      phoneNumber: yup.string().required("Phone number is required"),
-      votersCardNumber: yup.string().required("Voters card number is required"),
-      nin: yup.string().required("NIN number is required"),
+      phoneNumber: yup
+        .string()
+        .required("Phone number is required")
+        .min(11, "Phone number must not be less than 11 characters")
+        .max(11, "Phone number must not be greater than 11 characters"),
+      votersCardNumber: yup.string().required("Voters ID is required"),
+      nin: yup
+        .string()
+        .required("NIN number is required")
+        .min(11, "NIN must not be less than 11 characters")
+        .max(11, "NIN must not be greater than 11 characters"),
       age: yup.string().required("Age is required"),
       nationality: yup.string().required("Nationality is required"),
       stateOfOrigin: yup.string().required("State of Origin is required"),
@@ -52,9 +75,7 @@ const RegisterPage = () => {
 
   return (
     <div className="col-11 col-md-7 mx-auto p-3 p-md-5 bg-secondary bg-opacity-50 rounded-3 my-5">
-      <h2 className="text-white fw-bold text-center">
-        Register
-      </h2>
+      <h2 className="text-white fw-bold text-center">Register</h2>
       <form onSubmit={formik.handleSubmit} className="row mt-3 mt-md-4">
         <div className="col-12 col-md-6">
           <div className="mb-3">
@@ -143,22 +164,20 @@ const RegisterPage = () => {
               onBlur={formik.handleBlur}
             />
             {formik.touched.phoneNumber && formik.errors.phoneNumber && (
-              <small className="text-warning">{formik.errors.phoneNumber}</small>
+              <small className="text-warning">
+                {formik.errors.phoneNumber}
+              </small>
             )}
           </div>
 
           <div className="mb-3">
-            <label
-              htmlFor="votersCardNumber"
-              className="form-label fw-semibold"
-            >
+            <label htmlFor="votersCardNumber" className="form-label fw-semibold">
               Voters' Card Number
             </label>
             <input
               type="text"
               className={`form-control ${
-                formik.touched.votersCardNumber &&
-                formik.errors.votersCardNumber
+                formik.touched.votersCardNumber && formik.errors.votersCardNumber
                   ? "is-invalid"
                   : ""
               }`}
@@ -169,12 +188,9 @@ const RegisterPage = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.votersCardNumber &&
-              formik.errors.votersCardNumber && (
-                <small className="text-warning">
-                  {formik.errors.votersCardNumber}
-                </small>
-              )}
+            {formik.touched.votersCardNumber && formik.errors.votersCardNumber && (
+              <small className="text-warning">{formik.errors.votersCardNumber}</small>
+            )}
           </div>
 
           <div className="mb-3">
@@ -288,7 +304,9 @@ const RegisterPage = () => {
               onBlur={formik.handleBlur}
             />
             {formik.touched.lgaOfOrigin && formik.errors.lgaOfOrigin && (
-              <small className="text-warning">{formik.errors.lgaOfOrigin}</small>
+              <small className="text-warning">
+                {formik.errors.lgaOfOrigin}
+              </small>
             )}
           </div>
 
@@ -433,6 +451,12 @@ const RegisterPage = () => {
           </div>
         </div>
       </form>
+      <div className="d-flex justify-content-center fw-semibold mt-3">
+        <span>Already registered?</span>
+        <span className="ms-2">
+          <Link to="/login">Login</Link>
+        </span>
+      </div>
     </div>
   );
 };
