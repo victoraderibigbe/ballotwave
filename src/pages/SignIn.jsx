@@ -15,7 +15,7 @@ const SignIn = () => {
     },
     onSubmit: (values) => {
       axios
-        .post("http://localhost:3000/user/login", values)
+        .post("https://ballotwave-api.vercel.app/user/login", values)
         .then((res) => {
           if (res.status !== 200) {
             toast.error(res.data.message);

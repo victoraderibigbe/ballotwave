@@ -29,8 +29,9 @@ const RegisterPage = () => {
       delete values.confirmPassword;
 
       axios
-        .post("http://localhost:3000/user/register", values)
+        .post("https://ballotwave-api.vercel.app/user/register", values)
         .then((res) => {
+          console.log(res);
           if (res.status !== 200) {
             toast.error(res.data.message);
           }
