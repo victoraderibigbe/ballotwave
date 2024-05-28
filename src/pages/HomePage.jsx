@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Footer from "./FooterPage";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -140,7 +139,6 @@ const HomePage = () => {
           </div>
         </section>
       </div>
-      <Footer />
     </>
   );
 };

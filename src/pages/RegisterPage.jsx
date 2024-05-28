@@ -82,7 +82,7 @@ const RegisterPage = () => {
   });
 
   return (
-    <div className="col-11 col-md-7 mx-auto p-3 p-md-5 bg-secondary bg-opacity-50 rounded-3 my-5">
+    <div className="col-11 col-md-7 mx-auto p-3 p-md-5 bg-secondary bg-opacity-50 rounded-3 mt-5">
       <h2 className="text-white fw-bold text-center">Register</h2>
       <form onSubmit={formik.handleSubmit} className="row mt-3 mt-md-4">
         <div className="col-12 col-md-6">

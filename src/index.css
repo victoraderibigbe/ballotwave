@@ -9,3 +9,7 @@ body {
     min-height: 100vh;
   }
 }
+
+.login-container {
+  min-height: 60vh;
+}

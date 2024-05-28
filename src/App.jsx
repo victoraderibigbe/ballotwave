@@ -12,12 +12,12 @@ function App() {
     <>
       <Toaster />
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="" element={<Home />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="login" element={<SignIn />} />
+          <Route path="vote" element={<VotingPage />} />
         </Route>
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<SignIn />} />
-        <Route path="/vote" element={<VotingPage />} />
       </Routes>
     </>
   );

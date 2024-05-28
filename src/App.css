@@ -1,128 +1,125 @@
-.img-h{
-    height: 90vh;
-    background-image: url("https://img.freepik.com/premium-photo/patriotic-nigerian-woman-smiling-with-national-flag_151355-26365.jpg?w=740");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+.img-h {
+  height: 90vh;
+  background-image: url("https://img.freepik.com/premium-photo/patriotic-nigerian-woman-smiling-with-national-flag_151355-26365.jpg?w=740");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
-.mt-top{
-    margin-top: 3pc;
+.mt-top {
+  margin-top: 3pc;
 }
 .get-position {
-    position: absolute;
-    left: 0%;
-    right:0%;
-    height: 40vh;
-    top: 40%;
-    transform: translateX(-50%);
-    backdrop-filter: blur(10px);
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  height: 40vh;
+  top: 40%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(10px);
 }
-.btn{
-    background-color: rgb(33, 105, 33) !important;
-    overflow: hidden;
-    transition: background-color 0.3s ease-in , transform 0.3 ease;
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.3);
-    color: #fff !important;
-    position: relative;
+.btn {
+  background-color: rgb(33, 105, 33) !important;
+  overflow: hidden;
+  transition: background-color 0.3s ease-in, transform 0.3 ease;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  color: #fff !important;
+  position: relative;
 }
-.btn:before, .btn:after{
-    content: "";
-    position: absolute;
-    background-color: rgb(34,34,34);
+.btn:before,
+.btn:after {
+  content: "";
+  position: absolute;
+  background-color: rgb(34, 34, 34);
 }
-.get-w{
-    height: 1vh;
-    margin-top: 16px;
-    
+.get-w {
+  height: 1vh;
+  margin-top: 16px;
 }
-.rounded-full{
-    border-radius: 100px !important;
+.rounded-full {
+  border-radius: 100px !important;
 }
-.position-top{
-    margin-top: -40px;
-
+.position-top {
+  margin-top: -40px;
 }
 
 .card12 {
-    position: relative;
-    color: #000;
-    background-color: #f5f5f5;
-    font-family: "Inter", sans-serif;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    overflow: hidden;
-  }
-  
-  .card12-img img {
-    width: 100%;
-  }
-  
-  .card12-details {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 30px;
-    background-color: #f5f5f5;
-    border-top-left-radius: 22px;
-    transform: translateY(144px);
-    transition: transform 0.25s;
-  }
-  
-  .card12-details::before {
-    content: "";
-    position: absolute;
-    top: -47px;
-    right: -45px;
-    width: 100px;
-    height: 100px;
-    transform: rotate(-175deg);
-    border-radius: 50%;
-    box-shadow: inset 48px 47px #f2f2f2;
-  }
-  
-  .card12-title {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .card12-subtitle {
-    display: block;
-    font-size: 14px;
-    margin: 7px 0 2px;
-  }
-  
-  .card12-description {
-    font-size: 13px;
-    opacity: 0;
-    transition: opacity 0.5s;
-  }
-  
-  .card12:hover .card12-details {
-    transform: translateY(0);
-  }
-  
-  .card12:hover .card12-description {
-    opacity: 1;
-    transition-delay: 0.25s;
-  }
-  .img-height{
-    height: 63vh;
-  }
-  .logo-height{
-    border-radius: 100px;
-    height: 9vh;
-  }
-  .get-blur{
-    backdrop-filter: blur(10px);
-    border-radius: 50px;
-  }
-@media (max-width:688px) {
+  position: relative;
+  color: #000;
+  background-color: #f5f5f5;
+  font-family: "Inter", sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+}
 
-   .img-h{
+.card12-img img {
+  width: 100%;
+}
+
+.card12-details {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 30px;
+  background-color: #f5f5f5;
+  border-top-left-radius: 22px;
+  transform: translateY(144px);
+  transition: transform 0.25s;
+}
+
+.card12-details::before {
+  content: "";
+  position: absolute;
+  top: -47px;
+  right: -45px;
+  width: 100px;
+  height: 100px;
+  transform: rotate(-175deg);
+  border-radius: 50%;
+  box-shadow: inset 48px 47px #f2f2f2;
+}
+
+.card12-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card12-subtitle {
+  display: block;
+  font-size: 14px;
+  margin: 7px 0 2px;
+}
+
+.card12-description {
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.card12:hover .card12-details {
+  transform: translateY(0);
+}
+
+.card12:hover .card12-description {
+  opacity: 1;
+  transition-delay: 0.25s;
+}
+.img-height {
+  height: 63vh;
+}
+.logo-height {
+  border-radius: 100px;
+  height: 9vh;
+}
+.get-blur {
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+}
+@media (max-width: 688px) {
+  .img-h {
     height: 100vh;
     background-image: url("https://img.freepik.com/premium-photo/patriotic-nigerian-woman-smiling-with-national-flag_151355-26365.jpg?w=740");
-    
-} 
-.img-height{
+  }
+  .img-height {
     height: 30vh;
   }
   .card12-details {
