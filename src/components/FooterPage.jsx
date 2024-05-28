@@ -1,7 +1,7 @@
 const FooterPage = () => {
   return (
     <>
-      <footer className="bg-dark text-light py-4 mt-5">
+      <footer className="bg-dark text-light py-4">
         <div className="container">
           <div className="row">
             <div className="col-md-4">

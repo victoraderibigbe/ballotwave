@@ -42,8 +42,8 @@ const SignIn = () => {
   });
 
   return (
-    <div className="login-container">
-      <div className="col-11 col-md-4 mx-auto p-3 p-md-5 bg-secondary bg-opacity-50 rounded-3 my-5">
+    <div className="auth-body login-container pt-5">
+      <div className="col-11 col-md-4 mx-auto p-3 p-md-5 bg-secondary bg-opacity-50 rounded-3">
         <h2 className="text-white fw-bold text-center">
           Sign in to cast your vote
         </h2>

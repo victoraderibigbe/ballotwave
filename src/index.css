@@ -1,15 +1,15 @@
-body {
+.auth-body {
   background-image: url("./assets/nigeria-flag.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 768px) {
-  body {
+  auth-body {
     min-height: 100vh;
   }
 }
 
 .login-container {
-  min-height: 60vh;
+  min-height: 70vh;
 }

@@ -14,7 +14,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="container-fluid mt-top px-0">
+      <div className="container-fluid px-0">
         <div
           data-aos="zoom-in"
           className="border border-light text-center mx-auto  rounded get-position col-md-4 col-12 pt-5"
