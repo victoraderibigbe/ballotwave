@@ -1,5 +1,11 @@
 body {
-    background-image: url("./assets/nigeria-flag.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-image: url("./assets/nigeria-flag.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    min-height: 100vh;
+  }
 }

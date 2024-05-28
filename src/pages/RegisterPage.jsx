@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -23,19 +26,23 @@ const RegisterPage = () => {
       confirmPassword: "",
     },
     onSubmit: (values) => {
-      console.log(values);
-
       delete values.confirmPassword;
-
-      console.log(values);
 
       axios
         .post("http://localhost:3000/user/register", values)
         .then((res) => {
-          console.log(res);
+          if (res.status !== 200) {
+            toast.error(res.data.message);
+          }
+
+          toast.success(res.data.message);
+          setTimeout(() => {
+            navigate("/login");
+          }, 3000);
         })
         .catch((err) => {
           console.log(err);
+          toast.error(err.response.data.message);
         });
     },
     validationSchema: yup.object({
@@ -171,13 +178,17 @@ const RegisterPage = () => {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="votersCardNumber" className="form-label fw-semibold">
+            <label
+              htmlFor="votersCardNumber"
+              className="form-label fw-semibold"
+            >
               Voters' Card Number
             </label>
             <input
               type="text"
               className={`form-control ${
-                formik.touched.votersCardNumber && formik.errors.votersCardNumber
+                formik.touched.votersCardNumber &&
+                formik.errors.votersCardNumber
                   ? "is-invalid"
                   : ""
               }`}
@@ -188,9 +199,12 @@ const RegisterPage = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.votersCardNumber && formik.errors.votersCardNumber && (
-              <small className="text-warning">{formik.errors.votersCardNumber}</small>
-            )}
+            {formik.touched.votersCardNumber &&
+              formik.errors.votersCardNumber && (
+                <small className="text-warning">
+                  {formik.errors.votersCardNumber}
+                </small>
+              )}
           </div>
 
           <div className="mb-3">
@@ -454,7 +468,9 @@ const RegisterPage = () => {
       <div className="d-flex justify-content-center fw-semibold mt-3">
         <span>Already registered?</span>
         <span className="ms-2">
-          <Link to="/login">Login</Link>
+          <Link to="/login" className="text-light">
+            Login
+          </Link>
         </span>
       </div>
     </div>
