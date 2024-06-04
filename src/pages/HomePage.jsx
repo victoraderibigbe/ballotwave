@@ -26,7 +26,7 @@ const HomePage = () => {
               VOTE NOW!
             </Link>
           </button>
-          <p className="text-light mt-2">MAY 27 - MAY 30</p>
+          <p className="text-light mt-2">JUNE 10 - JUNE 15</p>
         </div>
         <div className="col-12 img-h"></div>
         <section className="position-top">
