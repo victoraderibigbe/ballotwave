@@ -7,10 +7,13 @@ const HomeHeader = () => {
     <>
       <nav className="navbar fw-bold shadow navbar-expand-lg fixed-top px-md-5 bg-body-tertiary">
         <div className="container-fluid">
+          <div>
+
         <img src="https://img.freepik.com/premium-vector/modern-unique-hexagon-letter-bw-logo-design-template-elegant-initial-bw-letter-logo-concept_1101554-432.jpg?w=740" className="logo-height" alt="" />
-          <Link className="navbar-brand fs-4" to="/">
+          <Link className="navbar-brand fs-4 mt-3" to="/">
             BallotWave
           </Link>
+          </div>
           <button
             className="navbar-toggler"
             type="button"
@@ -40,9 +43,9 @@ const HomeHeader = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/dashboard">
                   Dashboard
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

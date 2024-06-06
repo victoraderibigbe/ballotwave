@@ -1,3 +1,4 @@
+
 .img-h{
     height: 90vh;
     background-image: url("https://img.freepik.com/premium-photo/patriotic-nigerian-woman-smiling-with-national-flag_151355-26365.jpg?w=740");
@@ -40,6 +41,7 @@
 }
 .position-top{
     margin-top: -40px;
+    padding-top: 10px;
 
 }
 
@@ -110,11 +112,19 @@
   .logo-height{
     border-radius: 100px;
     height: 9vh;
+    margin-top: -10px;
   }
   .get-blur{
     backdrop-filter: blur(10px);
     border-radius: 50px;
   }
+  /* .get-bg {
+    background: linear-gradient(90deg, rgb(24, 207, 24) 33.33%, white 33.33%, white 66.66%, rgb(24, 207, 24) 66.66%);
+} */
+.get-bg {
+  background: linear-gradient(90deg, rgb(24, 207, 24), rgb(0, 128, 0));
+}
+
 @media (max-width:688px) {
 
    .img-h{
