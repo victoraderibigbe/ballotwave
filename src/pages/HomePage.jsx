@@ -14,6 +14,20 @@ const HomePage = () => {
 
   return (
     <>
+      <div className="container-fluid mt-top px-0">
+        <div
+          data-aos="zoom-in"
+          className="border border-light text-center py-3 mx-auto  rounded get-position col-md-4 col-12 "
+        >
+          <p className="text-light fs-3 fw-bold">
+            Give Your Important Vote Made The Pure Country
+          </p>
+          <button className="btn py-2 px-5">
+            <Link className="text-decoration-none text-white" to="/register">
+              VOTE NOW!
+            </Link>
+          </button>
+          <p className="text-light mt-2">MAY 27 - MAY 30</p>
       <div className="container-fluid px-0">
         <div
           data-aos="zoom-in"
@@ -29,8 +43,12 @@ const HomePage = () => {
           <p className="text-light mt-2">JUNE 10 - JUNE 15</p>
         </div>
         <div className="col-12 img-h"></div>
+        <div className="">
         <section className="position-top">
           <div className="px-md-5 px-4 d-md-flex justify-content-around mb-4 mx-auto ">
+
+            <div data-aos="zoom-in" className="card12 col-md-3 rounded">
+
             <div
               data-aos="fade-up"
               data-aos-anchor-placement="top-bottom"
@@ -53,7 +71,7 @@ const HomePage = () => {
               </div>
             </div>
             <div
-              data-aos="fade-up"
+              data-aos="zoom-in"
               data-aos-anchor-placement="center-center"
               className="card12  col-md-3 mt-4 mt-md-0 rounded"
             >
@@ -74,7 +92,7 @@ const HomePage = () => {
               </div>
             </div>
             <div
-              data-aos="fade-up"
+              data-aos="zoom-in"
               data-aos-anchor-placement="bottom-center"
               className="card12  col-md-3 mt-4 mt-md-0 rounded"
             >
@@ -98,7 +116,7 @@ const HomePage = () => {
 
         <section>
           <div
-            data-aos="zoom-out-down"
+            data-aos="zoom-in"
             className="d-md-flex gap-md-3 mt-5 px-md-5 px-3"
           >
             <div className="col-md-6 py-4">
@@ -109,7 +127,7 @@ const HomePage = () => {
               />
             </div>
             <div
-              data-aos="zoom-out-down"
+              data-aos="zoom-in"
               style={{ color: "gray" }}
               className="col-md-6 get-blur col-12 px-md-4"
             >
@@ -117,10 +135,11 @@ const HomePage = () => {
                 <p className="fw-bold text-dark fs-5">Why Choose Us </p>
                 <div className="col-md-2 col-4 rounded ms-md-2 bg-success get-w"></div>
               </div>
-              <p className="fw-bold text-dark col-md-9 mt-2">
+              <p className="fw-bold text-dark col-md-9">
                 Leadership is the trusted & powerful
                 <span className="text-success"> political team.</span>
               </p>
+              <p className="text-md">
               Leadership represents the culmination of experience, integrity,
               and vision. It is the ability to navigate through the complexities
               of governance with wisdom and responsibility, earning the trust
@@ -130,6 +149,7 @@ const HomePage = () => {
               they forget a path forward, guided by principles of fairness,
               inclusivity, and the common good, making decisions that shape the
               present and future of their society.
+              </p>
               <div>
                 <button className="btn btn-success rounded-full py-2 mt-4 col-md-3 col-7">
                   Read More
@@ -139,6 +159,8 @@ const HomePage = () => {
           </div>
         </section>
       </div>
+      </div>
+      <Footer />
     </>
   );
 };
