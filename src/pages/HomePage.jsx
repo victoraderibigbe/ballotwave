@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import Footer from "./FooterPage";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 const HomePage = () => {
   useEffect(() => {
     AOS.init({
@@ -11,6 +11,7 @@ const HomePage = () => {
       once: true,
     });
   }, []);
+
   return (
     <>
       <div className="container-fluid mt-top px-0">
@@ -27,12 +28,32 @@ const HomePage = () => {
             </Link>
           </button>
           <p className="text-light mt-2">MAY 27 - MAY 30</p>
+      <div className="container-fluid px-0">
+        <div
+          data-aos="zoom-in"
+          className="border border-light text-center mx-auto  rounded get-position col-md-4 col-12 pt-5"
+        >
+          <p className="text-light fs-3 fw-bold">Your Vote Counts!</p>
+          <button className="btn py-2 px-5">
+            <Link className="text-decoration-none text-white" to="/register">
+              {" "}
+              VOTE NOW!
+            </Link>
+          </button>
+          <p className="text-light mt-2">JUNE 10 - JUNE 15</p>
         </div>
         <div className="col-12 img-h"></div>
         <div className="">
         <section className="position-top">
           <div className="px-md-5 px-4 d-md-flex justify-content-around mb-4 mx-auto ">
+
             <div data-aos="zoom-in" className="card12 col-md-3 rounded">
+
+            <div
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              className="card12 col-md-3 rounded"
+            >
               <div className="card12-img">
                 <img
                   src="https://img.freepik.com/free-photo/top-view-paper-style-voting-arrangement_23-2149095481.jpg?t=st=1716647107~exp=1716650707~hmac=5668b17270f7678e0215bb15ce3fbd95a559f48a39c0759a7f42525000819e98&w=740"
@@ -51,6 +72,7 @@ const HomePage = () => {
             </div>
             <div
               data-aos="zoom-in"
+              data-aos-anchor-placement="center-center"
               className="card12  col-md-3 mt-4 mt-md-0 rounded"
             >
               <div className="card12-img">
@@ -71,6 +93,7 @@ const HomePage = () => {
             </div>
             <div
               data-aos="zoom-in"
+              data-aos-anchor-placement="bottom-center"
               className="card12  col-md-3 mt-4 mt-md-0 rounded"
             >
               <div className="card12-img">
