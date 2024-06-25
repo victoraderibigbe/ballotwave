@@ -9,7 +9,8 @@ import Candidates from "./pages/Candidates";
 import { ToastContainer, Bounce } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css";
 import Displayuser from "./pages/Displayuser";
-Displayuser
+import VotingPage from "./pages/VotingPage";
+
 function App() {
   return (
     <>
@@ -26,13 +27,13 @@ function App() {
         theme="light"
         transition={Bounce}
       />
-
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="vote" element={<VotingPage />} />
         </Route>
-        <Route path="/register" element={<RegisterPage />} />
-        <Route element={<Dashlayout />}> {/* Corrected this line */}
+        <Route element={<Dashlayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/user/info" element={<Displayuser />} />
           <Route path="/candidate" element={<Candidates />} />
@@ -43,4 +44,3 @@ function App() {
 }
 
 export default App;
-

@@ -47,8 +47,8 @@ const UserInfo = () => {
             size={50}
             thickness={180}
             speed={100}
-            color="rgba(0, 128, 0 , 0.82)"
-            secondaryColor="rgba(0, 128, 0 , 0.55)"
+            color="rgba(255, 255, 255, 1)"
+            secondaryColor="rgba(255, 255, 255, 0.55)"
           />
         </div>
       )}

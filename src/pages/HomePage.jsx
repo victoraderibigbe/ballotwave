@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
-import Footer from "./FooterPage";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import FooterPage from "../components/FooterPage";
+
 const HomePage = () => {
   useEffect(() => {
     AOS.init({
@@ -11,12 +12,13 @@ const HomePage = () => {
       once: true,
     });
   }, []);
+
   return (
     <>
       <div className="container-fluid mt-top px-0">
         <div
           data-aos="zoom-in"
-          className="border border-light text-center py-3 mx-auto  rounded get-position col-md-4 col-12 "
+          className="border border-light text-center py-3 mx-auto rounded get-position col-md-4 col-12"
         >
           <p className="text-light fs-3 fw-bold">
             Give Your Important Vote Made The Pure Country
@@ -28,10 +30,21 @@ const HomePage = () => {
           </button>
           <p className="text-light mt-2">MAY 27 - MAY 30</p>
         </div>
+        <div
+          data-aos="zoom-in"
+          className="border border-light text-center mx-auto rounded get-position col-md-4 col-12 pt-5"
+        >
+          <p className="text-light fs-3 fw-bold">Your Vote Counts!</p>
+          <button className="btn py-2 px-5">
+            <Link className="text-decoration-none text-white" to="/register">
+              VOTE NOW!
+            </Link>
+          </button>
+          <p className="text-light mt-2">JUNE 10 - JUNE 15</p>
+        </div>
         <div className="col-12 img-h"></div>
-        <div className="">
         <section className="position-top">
-          <div className="px-md-5 px-4 d-md-flex justify-content-around mb-4 mx-auto ">
+          <div className="px-md-5 px-4 d-md-flex justify-content-around mb-4 mx-auto">
             <div data-aos="zoom-in" className="card12 col-md-3 rounded">
               <div className="card12-img">
                 <img
@@ -40,7 +53,7 @@ const HomePage = () => {
                 />
               </div>
               <div className="card12-details">
-                <span className="card12-title ">Our Campaign</span>
+                <span className="card12-title">Our Campaign</span>
                 <p className="card12-description">
                   At BallotWave, we drive positive change. We focus on community
                   engagement and advocacy. Join us to make a real impact.
@@ -51,7 +64,8 @@ const HomePage = () => {
             </div>
             <div
               data-aos="zoom-in"
-              className="card12  col-md-3 mt-4 mt-md-0 rounded"
+              data-aos-anchor-placement="center-center"
+              className="card12 col-md-3 mt-4 mt-md-0 rounded"
             >
               <div className="card12-img">
                 <img
@@ -59,7 +73,7 @@ const HomePage = () => {
                   alt="nature-pic-CSSnippets"
                 />
               </div>
-              <div className="card12-details ">
+              <div className="card12-details">
                 <span className="card12-title">Our Party Growing</span>
                 <p className="card12-description">
                   Our mission extends beyond our initial goals as we continue to
@@ -71,7 +85,8 @@ const HomePage = () => {
             </div>
             <div
               data-aos="zoom-in"
-              className="card12  col-md-3 mt-4 mt-md-0 rounded"
+              data-aos-anchor-placement="bottom-center"
+              className="card12 col-md-3 mt-4 mt-md-0 rounded"
             >
               <div className="card12-img">
                 <img
@@ -84,7 +99,7 @@ const HomePage = () => {
                 <p className="card12-description">
                   Volunteers are essential to BallotWave's mission. Your time
                   and skills create real change. Sign up on our website and
-                  attend orientation. Join a network of dedicated individuals
+                  attend orientation. Join a network of dedicated individuals.
                 </p>
               </div>
             </div>
@@ -92,13 +107,10 @@ const HomePage = () => {
         </section>
 
         <section>
-          <div
-            data-aos="zoom-in"
-            className="d-md-flex gap-md-3 mt-5 px-md-5 px-3"
-          >
+          <div data-aos="zoom-in" className="d-md-flex gap-md-3 mt-5 px-md-5 px-3">
             <div className="col-md-6 py-4">
               <img
-                className="col-12 mt-5 img-height rounded "
+                className="col-12 mt-5 img-height rounded"
                 src="https://img.freepik.com/premium-photo/african-nigerian-politician-making-speech-conference-hall-nigeria-generative-ai_151355-20151.jpg?w=740"
                 alt=""
               />
@@ -108,24 +120,25 @@ const HomePage = () => {
               style={{ color: "gray" }}
               className="col-md-6 get-blur col-12 px-md-4"
             >
-              <div className="d-flex gap-2 mt-3 ">
-                <p className="fw-bold text-dark fs-5">Why Choose Us </p>
-                <div className="col-md-2 col-4 rounded ms-md-2 bg-success get-w"></div>
+              <div className="d-flex gap-2 mt-3">
+                <p className="fw-bold text-dark fs-5">Why Choose Us</p>
+                {/* <div className="col-md-2 col-4 rounded ms-md-2 bg-success get-w"></div> */}
               </div>
               <p className="fw-bold text-dark col-md-9">
                 Leadership is the trusted & powerful
                 <span className="text-success"> political team.</span>
               </p>
               <p className="text-md">
-              Leadership represents the culmination of experience, integrity,
-              and vision. It is the ability to navigate through the complexities
-              of governance with wisdom and responsibility, earning the trust
-              and respect of both allies and constituents alike. A powerful
-              political team under this leadership is characterized by cohesion,
-              strategic acumen, and a shared commitment to progress. Together,
-              they forget a path forward, guided by principles of fairness,
-              inclusivity, and the common good, making decisions that shape the
-              present and future of their society.
+                Leadership represents the culmination of experience, integrity,
+                and vision. It is the ability to navigate through the
+                complexities of governance with wisdom and responsibility,
+                earning the trust and respect of both allies and constituents
+                alike. A powerful political team under this leadership is
+                characterized by cohesion, strategic acumen, and a shared
+                commitment to progress. Together, they forge a path forward,
+                guided by principles of fairness, inclusivity, and the common
+                good, making decisions that shape the present and future of
+                their society.
               </p>
               <div>
                 <button className="btn btn-success rounded-full py-2 mt-4 col-md-3 col-7">
@@ -136,8 +149,7 @@ const HomePage = () => {
           </div>
         </section>
       </div>
-      </div>
-      <Footer />
+      <FooterPage />
     </>
   );
 };

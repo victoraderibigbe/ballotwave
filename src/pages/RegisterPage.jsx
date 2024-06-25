@@ -1,4 +1,3 @@
-import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast, ToastContainer } from "react-toastify";
@@ -7,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const RegisterPage = () => {
-  const navigate = useNavigate();
   const url = "https://ballotwave-api.vercel.app/voters/validate";
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       userId: "",
