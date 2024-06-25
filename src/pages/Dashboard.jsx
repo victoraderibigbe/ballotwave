@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [selectedCandidate, setSelectedCandidate] = useState(null);
+  const [user, setUser] = useState(null);
   const [votes, setVotes] = useState([
     {
       id: 1,
@@ -31,22 +33,44 @@ const Dashboard = () => {
       voteCount: 0,
     },
   ]);
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   const handleVote = (id) => {
     setVotes((prevVotes) =>
       prevVotes.map((candidate) =>
         candidate.id === id
-          ? { ...candidate, voteCount: candidate.voteCount + 1 }
+          ? { ...candidate, voteCount: candidate.voteCount }
           : candidate
       )
     );
     toast.success("Candidate choosing Successfully");
     setTimeout(() => {
-      navigate("/candidate");
+      // navigate("/candidate");
     }, 4000);
     setSelectedCandidate(id);
+    const selectedCandidate = votes.find((candidate) => candidate.id === id);
+    console.log(selectedCandidate);
+    const allData = {
+      partyName: selectedCandidate.partyName,
+      candidate: selectedCandidate.candidateName,
+      votersCode: user.passKey,
+      votersName: user.name,
+    };
+    console.log(allData);
+    axios
+    .post("", { voteDetails: allData })
+    .then((res) => {
+      console.log("success", res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   };
-  console.log(selectedCandidate);
   return (
     <>
       <div>

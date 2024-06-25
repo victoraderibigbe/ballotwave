@@ -18,20 +18,6 @@ const HomePage = () => {
       <div className="container-fluid mt-top px-0">
         <div
           data-aos="zoom-in"
-          className="border border-light text-center py-3 mx-auto rounded get-position col-md-4 col-12"
-        >
-          <p className="text-light fs-3 fw-bold">
-            Give Your Important Vote Made The Pure Country
-          </p>
-          <button className="btn py-2 px-5">
-            <Link className="text-decoration-none text-white" to="/register">
-              VOTE NOW!
-            </Link>
-          </button>
-          <p className="text-light mt-2">MAY 27 - MAY 30</p>
-        </div>
-        <div
-          data-aos="zoom-in"
           className="border border-light text-center mx-auto rounded get-position col-md-4 col-12 pt-5"
         >
           <p className="text-light fs-3 fw-bold">Your Vote Counts!</p>
