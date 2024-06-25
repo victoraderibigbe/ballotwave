@@ -1,22 +1,23 @@
+
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SpinnerCircular } from "spinners-react"; // Adjust the import based on the package used
+import { SpinnerCircularFixed } from "spinners-react";
 
-const UserInfo = () => {
+
+const Userinfo = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-    setIsLoading(false); // Set loading to false after fetching user data
+    setIsLoading(false); 
   }, []);
 
   const navigateToVote = () => {
-    setIsLoading(true); // Start loading
+    setIsLoading(true);
     setTimeout(() => {
       navigate("/dashboard");
     }, 2000);
@@ -28,7 +29,7 @@ const UserInfo = () => {
 
   return (
     <>
-      {isLoading && (
+          {isLoading && (
         <div
           style={{
             position: "fixed",
@@ -43,7 +44,7 @@ const UserInfo = () => {
             zIndex: 1000,
           }}
         >
-          <SpinnerCircular
+          <SpinnerCircularFixed
             size={50}
             thickness={180}
             speed={100}
@@ -104,7 +105,7 @@ const UserInfo = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default UserInfo;
+export default Userinfo

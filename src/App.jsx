@@ -1,5 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Layout from "./components/Layout";
+import Dashlayout from "./components/Dashlayout";
+import RegisterPage from "./pages/RegisterPage";
+import Dashboard from "./pages/Dashboard";
+import Candidates from "./pages/Candidates";
+import { ToastContainer, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Home from "./pages/HomePage";
+import Userinfo from "./pages/Userinfo";
 
 function App() {
   return (
@@ -15,17 +24,18 @@ function App() {
         draggable
         pauseOnHover
         theme="light"
-        transition={Bounce}
+        transition={Bounce} // Corrected this line
       />
+
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="vote" element={<VotingPage />} />
         </Route>
+        <Route path="/register" element={<RegisterPage />} />
         <Route element={<Dashlayout />}>
+          {/* Corrected this line */}
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/user/info" element={<Displayuser />} />
+          <Route path="user/info" element={<Userinfo/>}/>
           <Route path="/candidate" element={<Candidates />} />
         </Route>
       </Routes>
