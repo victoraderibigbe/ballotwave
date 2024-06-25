@@ -3,13 +3,13 @@ import "./App.css";
 import Layout from "./components/Layout";
 import Dashlayout from "./components/Dashlayout"; 
 import RegisterPage from "./pages/RegisterPage";
-import SignIn from "./pages/SignIn";
 import Home from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
 import Candidates from "./pages/Candidates";
 import { ToastContainer, Bounce } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css";
-
+import Displayuser from "./pages/Displayuser";
+Displayuser
 function App() {
   return (
     <>
@@ -24,7 +24,7 @@ function App() {
         draggable
         pauseOnHover
         theme="light"
-        transition={Bounce} // Corrected this line
+        transition={Bounce}
       />
 
       <Routes>
@@ -32,9 +32,9 @@ function App() {
           <Route path="/" element={<Home />} />
         </Route>
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<SignIn />} />
         <Route element={<Dashlayout />}> {/* Corrected this line */}
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/user/info" element={<Displayuser />} />
           <Route path="/candidate" element={<Candidates />} />
         </Route>
       </Routes>

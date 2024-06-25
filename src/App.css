@@ -118,11 +118,13 @@
     backdrop-filter: blur(10px);
     border-radius: 50px;
   }
-  /* .get-bg {
-    background: linear-gradient(90deg, rgb(24, 207, 24) 33.33%, white 33.33%, white 66.66%, rgb(24, 207, 24) 66.66%);
-} */
+  .candidate-h{
+    height:160px ;
+    width: 160px;
+  }
+ 
 .get-bg {
-  background: linear-gradient(90deg, rgb(24, 207, 24), rgb(0, 128, 0));
+  background: linear-gradient(90deg, rgb(10, 107, 10), rgb(0, 128, 0));
 }
 
 @media (max-width:688px) {
@@ -132,6 +134,11 @@
     background-image: url("https://img.freepik.com/premium-photo/patriotic-nigerian-woman-smiling-with-national-flag_151355-26365.jpg?w=740");
     
 } 
+.candidate-h{
+height:100px ;
+margin: auto;
+width: 100px;
+}
 .img-height{
     height: 30vh;
   }
@@ -145,4 +152,20 @@
     transform: translateY(144px);
     transition: transform 0.25s;
   }
+}
+/* src/App.css */
+
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.candidates button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.results {
+  margin-top: 20px;
 }

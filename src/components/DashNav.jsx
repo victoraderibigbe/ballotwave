@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const DashNav = () => {
   return (
    <>
-   <nav class="navbar bg-body-tertiary fixed-top">
+   <nav class="navbar bg-body-tertiary px-0 shadow fixed-top">
           <div class="container-fluid">
             <div>
               <img

@@ -1,65 +1,105 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Img from "../assets/image.png";
-const Dashboard = () => {
-    
-    const [selectedCandidate, setSelectedCandidate] = useState(null);
-  const allCandidate = [
-    { id: 1, partyImg: Img, partyName: "PDP"},
-    { id: 2, partyImg: Img, partyName: "APC"},
-    { id: 3, partyImg: Img, partyName: "LP"},
-    { id: 4, partyImg: Img, partyName: "APGA"},
-    { id: 5, partyImg: Img, partyName: "NNPP"},
-    { id: 6, partyImg: Img, partyName: "SDP"},
-    { id: 7, partyImg: Img, partyName: "YPP"},
-    { id: 8, partyImg: Img, partyName: "ADC"},
-    { id: 9, partyImg: Img, partyName: "SQI"},
-  ];
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-  const handleSelection = (id) => {
-    setSelectedCandidate((prevSelected) => (prevSelected === id ? null : id));
+const Dashboard = () => {
+  const navigate = useNavigate();
+  const [selectedCandidate, setSelectedCandidate] = useState(null);
+  const [votes, setVotes] = useState([
+    {
+      id: 1,
+      partyImg:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Bola_Tinubu_portrait.jpg/819px-Bola_Tinubu_portrait.jpg",
+      partyName: "APC",
+      candidateName: "Bola Tinubu",
+      voteCount: 0,
+    },
+    {
+      id: 2,
+      partyImg:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnauMosQth2FKwBWmz4HANbx2ji3SE8KdsfQ&s",
+      partyName: "PDP",
+      candidateName: "Peter Obi",
+      voteCount: 0,
+    },
+    {
+      id: 3,
+      partyImg:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Bola_Tinubu_portrait.jpg/819px-Bola_Tinubu_portrait.jpg",
+      partyName: "LP",
+      candidateName: "Bola Tinubu",
+      voteCount: 0,
+    },
+  ]);
+
+  const handleVote = (id) => {
+    setVotes((prevVotes) =>
+      prevVotes.map((candidate) =>
+        candidate.id === id
+          ? { ...candidate, voteCount: candidate.voteCount + 1 }
+          : candidate
+      )
+    );
+    toast.success("Candidate choosing Successfully");
+    setTimeout(() => {
+      navigate("/candidate");
+    }, 4000);
+    setSelectedCandidate(id);
   };
+  console.log(selectedCandidate);
   return (
     <>
       <div>
-        
-        <div className=" pt-5  container">
-          <div className="mt-5 px-3 col-md-6 shadow rounded-5 mx-auto pb-3 ">
-            <h5 className="text-center  py-3">CHOOSE YOUR VOTE</h5>
-
-            <div className="rounded-4 py-3 px-3 bg-body-secondary shadow ">
-              <div className="">
-                <div className="row">
-                  {allCandidate.map((item, i) => (
-                    <>
-                      <div  key={item.id} className="mt-3 row">
-                        <div className="col-3">{i + 1}</div>
-                        <div className="col-3">
-                          <img
-                            className="col-5  rounded-5"
-                            src={item.partyImg}
-                            alt=""
-                          />
-                        </div>
-                        <div className="col-3">{item.partyName}</div>
-                        <div className="col-3">
-                          <div class="form-check form-switch">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              role="switch"
-                              id={`${item.id}`}
-                              checked={selectedCandidate === item.id}
-                              onChange={() => handleSelection(item.id)}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </>
-                  ))}
+        <div className=" container-fluid px-0 mt-1">
+          <img
+            className="col-12 position-relative"
+            src="https://img.freepik.com/free-photo/closeup-shot-waving-flag-nigeria-with-interesting-textures_181624-15997.jpg?t=st=1719243259~exp=1719246859~hmac=afb8d0dda208370feab0df6b877a80dbe74ac4180900957946b788bf81cf0a96&w=740"
+            alt=""
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              right: "0",
+              backgroundColor: "rgba(255, 255, 255, 0.7)",
+            }}
+            className="mt-5 px-3 py-4 col-md-9 shadow rounded-3 mx-auto pb-3"
+          >
+            <h5 className="text-center py-3 py-md-0 mt-2 mt-md-0 text-success">
+              CHOOSE YOUR VOTE
+            </h5>
+            {votes.map((item, i) => (
+              <div key={i} className="mt-3 rounded shadow px-2 py-2">
+                <div className="d-md-flex justify-content-between">
+                  <div className="">
+                    <img
+                      className="candidate-h shadow rounded"
+                      src={item.partyImg}
+                      alt=""
+                    />
+                  </div>
+                  <div className="mt-2 mt-md-0">
+                    <p>
+                      Candidate id: <b className="fw-bold">{item.id}</b>
+                    </p>
+                    <p>
+                      Candidate Name
+                      <b className="fw-bold">{item.candidateName}</b>
+                    </p>
+                    <p>
+                      Party: <b className="fw-bold">{item.partyName}</b>
+                    </p>
+                    <button
+                      className="btn btn-success"
+                      onClick={() => handleVote(item.id)}
+                    >
+                      Vote for {item.partyName}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

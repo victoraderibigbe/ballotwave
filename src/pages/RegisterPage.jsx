@@ -3,22 +3,42 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
+  const url = "https://ballotwave-api.vercel.app/voters/validate";
   const formik = useFormik({
     initialValues: {
-      phoneNumber: "",
+      userId: "",
     },
     validationSchema: Yup.object({
-      phoneNumber: Yup.string()
-        .matches(/^\d+$/, "Phone number must be only digits")
-        .min(10, "Phone number must be at least 10 digits")
-        .required("Phone number is required"),
+      userId: Yup.string()
+        .matches(/^\d+$/, "userId must be only digits")
+        .min(6, "userId must be at least 6 digits")
+        .required("userId is required"),
     }),
     onSubmit: (values) => {
-      const fullPhoneNumber = `+234${values.phoneNumber}`;
-      console.log("Phone number submitted: ", fullPhoneNumber);
-      toast.success("Phone number submitted successfully!");
+      const code = Number(values.userId);
+      console.log(code);
+      axios
+        .post(url, { code })
+        .then((response) => {
+          console.log(response);
+          const userData = response.data.findUserWithCode;
+          if (userData) {
+            localStorage.setItem('user', JSON.stringify(userData));
+            toast.success("Verifying voter's id");
+            setTimeout(() => {
+              navigate("/user/info");
+            }, 6000);
+          } 
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Invalid voter's id");
+        });
     },
   });
 
@@ -29,33 +49,30 @@ const RegisterPage = () => {
         <div className="row py-5 border col-md-8 px-1 bg-white rounded">
           <div className="col-md-6 bg-white mt-2">
             <p className="fw-bold text-success">
-              ENTER A VALID PHONE NUMBER , TO GET STARTED
+              ENTER A VALID PHONE NUMBER, TO GET STARTED
             </p>
             <div className="col-md-10 px-3 py-3 mx-auto">
               <form onSubmit={formik.handleSubmit}>
-                <div className=" d-flex">
-                  <span className="input-group-text">+234</span>
+                <div className="d-flex">
                   <input
                     type="text"
                     className={`form-control border ${
-                      formik.errors.phoneNumber
-                        ? "border-danger"
-                        : "border-success"
+                      formik.errors.userId ? "border-danger" : "border-success"
                     }`}
                     id="floatingInput"
-                    placeholder="Enter your phone number"
-                    name="phoneNumber"
+                    placeholder="Enter your voter's id"
+                    name="userId"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.phoneNumber}
+                    value={formik.values.userId}
                   />
                 </div>
-                {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
+                {formik.touched.userId && formik.errors.userId ? (
                   <span
                     style={{ fontSize: "11px", marginTop: "-5px" }}
                     className="text-danger text-center"
                   >
-                    {formik.errors.phoneNumber}
+                    {formik.errors.userId}
                   </span>
                 ) : null}
                 <div className="text-center">
@@ -64,7 +81,7 @@ const RegisterPage = () => {
                     style={{ fontSize: "12px" }}
                     className="btn btn-success w-75 mt-2 py-2"
                   >
-                    Verify phone number
+                    Verify voter's id
                   </button>
                 </div>
               </form>
