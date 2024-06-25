@@ -8,12 +8,11 @@ import { useEffect, useState } from "react";
 import { SpinnerCircularFixed } from "spinners-react";
 
 const RegisterPage = () => {
-  
   const url = "https://ballotwave-api.vercel.app/voters/validate";
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    setIsLoading(false); 
+    setIsLoading(false);
   }, []);
   const formik = useFormik({
     initialValues: {
@@ -25,7 +24,7 @@ const RegisterPage = () => {
         .min(6, "userId must be at least 6 digits")
         .required("userId is required"),
     }),
-    
+
     onSubmit: (values) => {
       const code = Number(values.userId);
       console.log(code);
@@ -54,20 +53,20 @@ const RegisterPage = () => {
   return (
     <>
       {isLoading ? (
-         <div
-         style={{
-           position: "fixed",
-           top: 0,
-           left: 0,
-           right: 0,
-           bottom: 0,
-           backgroundColor: "rgba(0, 0, 0, 0.5)",
-           display: "flex",
-           justifyContent: "center",
-           alignItems: "center",
-           zIndex: 1000,
-         }}
-       >
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+          }}
+        >
           <SpinnerCircularFixed
             size={50}
             thickness={180}
@@ -78,69 +77,69 @@ const RegisterPage = () => {
         </div>
       ) : (
         <div
-        className="container-fluid px-0"
-        style={{
-          position: "relative",
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          filter: isLoading ? "blur(2px)" : "none",
-        }}
-      >
-        <div className="container-fluid d-flex px-md-5 px-4 get-bg align-items-center justify-content-center vh-100">
-          <div className="row py-5 border col-md-8 px-1 bg-white rounded">
-            <div className="col-md-6 bg-white mt-2">
-              <p className="fw-bold text-success">
-                ENTER A VALID VOTER'S ID, TO GET STARTED
-              </p>
-              <div className="col-md-10 px-3 py-3 mx-auto">
-                <form onSubmit={formik.handleSubmit}>
-                  <div className="d-flex">
-                    <input
-                      type="text"
-                      className={`form-control border ${
-                        formik.errors.userId
-                          ? "border-danger"
-                          : "border-success"
-                      }`}
-                      id="floatingInput"
-                      placeholder="Enter your voter's id"
-                      name="userId"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.userId}
-                    />
-                  </div>
-                  {formik.touched.userId && formik.errors.userId ? (
-                    <span
-                      style={{ fontSize: "14px", marginTop: "-5px" }}
-                      className="text-danger text-center"
-                    >
-                      {formik.errors.userId}
-                    </span>
-                  ) : null}
-                  <div className="text-center">
-                    <button
-                      type="submit"
-                      style={{ fontSize: "12px" }}
-                      className="btn btn-success w-75 mt-3 py-2"
-                    >
-                      Verify voter's id
-                    </button>
-                  </div>
-                </form>
+          className="container-fluid px-0"
+          style={{
+            position: "relative",
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            filter: isLoading ? "blur(2px)" : "none",
+          }}
+        >
+          <div className="container-fluid d-flex px-md-5 px-4 get-bg align-items-center justify-content-center vh-100">
+            <div className="row py-5 border col-md-8 px-1 bg-white rounded">
+              <div className="col-md-6 bg-white mt-2">
+                <p className="fw-bold text-success">
+                  ENTER A VALID VOTER'S ID, TO GET STARTED
+                </p>
+                <div className="col-md-10 px-3 py-3 mx-auto">
+                  <form onSubmit={formik.handleSubmit}>
+                    <div className="d-flex">
+                      <input
+                        type="text"
+                        className={`form-control border ${
+                          formik.errors.userId
+                            ? "border-danger"
+                            : "border-success"
+                        }`}
+                        id="floatingInput"
+                        placeholder="Enter your voter's id"
+                        name="userId"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.userId}
+                      />
+                    </div>
+                    {formik.touched.userId && formik.errors.userId ? (
+                      <span
+                        style={{ fontSize: "14px", marginTop: "-5px" }}
+                        className="text-danger text-center"
+                      >
+                        {formik.errors.userId}
+                      </span>
+                    ) : null}
+                    <div className="text-center">
+                      <button
+                        type="submit"
+                        style={{ fontSize: "12px" }}
+                        className="btn btn-success w-75 mt-3 py-2"
+                      >
+                        Verify voter's id
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div className="col-md-6 mt-2">
+                <img
+                  className="col-12 rounded img-fluid"
+                  src="https://img.freepik.com/premium-photo/elections-usa-closeup-people-s-hands-putting-ballots-into-ballot-box-i-voted_166373-5967.jpg?w=740"
+                  alt="Voting"
+                />
               </div>
             </div>
-            <div className="col-md-6 mt-2">
-              <img
-                className="col-12 rounded img-fluid"
-                src="https://img.freepik.com/premium-photo/elections-usa-closeup-people-s-hands-putting-ballots-into-ballot-box-i-voted_166373-5967.jpg?w=740"
-                alt="Voting"
-              />
-            </div>
           </div>
-        </div>
         </div>
       )}
     </>

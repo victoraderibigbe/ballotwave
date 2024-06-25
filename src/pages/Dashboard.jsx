@@ -50,7 +50,7 @@ const Dashboard = () => {
     );
     toast.success("Candidate choosing Successfully");
     setTimeout(() => {
-      // navigate("/candidate");
+      navigate("/candidate");
     }, 4000);
     setSelectedCandidate(id);
     const selectedCandidate = votes.find((candidate) => candidate.id === id);
