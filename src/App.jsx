@@ -1,16 +1,6 @@
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Layout from "./components/Layout";
-import Dashlayout from "./components/Dashlayout"; 
-import RegisterPage from "./pages/RegisterPage";
-import Home from "./pages/HomePage";
-import Dashboard from "./pages/Dashboard";
-import Candidates from "./pages/Candidates";
-import { ToastContainer, Bounce } from "react-toastify"; 
-import "react-toastify/dist/ReactToastify.css";
-import Displayuser from "./pages/Displayuser";
-import VotingPage from "./pages/VotingPage";
+
 function App() {
   return (
     <>
