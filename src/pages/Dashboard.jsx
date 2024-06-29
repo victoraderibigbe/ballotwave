@@ -1,134 +1,68 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import React from "react";
 
-const Dashboard = () => {
-  const navigate = useNavigate();
-  const [selectedCandidate, setSelectedCandidate] = useState(null);
-  const [user, setUser] = useState(null);
-  const [votes, setVotes] = useState([
-    {
-      id: 1,
-      partyImg:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Bola_Tinubu_portrait.jpg/819px-Bola_Tinubu_portrait.jpg",
-      partyName: "APC",
-      candidateName: "Bola Tinubu",
-      voteCount: 0,
-    },
-    {
-      id: 2,
-      partyImg:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnauMosQth2FKwBWmz4HANbx2ji3SE8KdsfQ&s",
-      partyName: "PDP",
-      candidateName: "Peter Obi",
-      voteCount: 0,
-    },
-    {
-      id: 3,
-      partyImg:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Bola_Tinubu_portrait.jpg/819px-Bola_Tinubu_portrait.jpg",
-      partyName: "LP",
-      candidateName: "Bola Tinubu",
-      voteCount: 0,
-    },
-  ]);
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+const candidates = [
+  {
+    name: 'Bola Tinubu',
+    image: 'https://via.placeholder.com/150', // Replace with actual image URL
+    dateOfBirth: 'March 29, 1952',
+    politicalParty: 'All Progressives Congress (APC)',
+    notableAchievements: [
+      'Governor of Lagos State from 1999 to 2007',
+      'Key role in the formation of APC',
+      'Prominent Nigerian political leader'
+    ],
+    description: 'Bola Tinubu is a Nigerian politician and a national leader of the All Progressives Congress. He was the governor of Lagos State from 1999 to 2007.'
+  },
+  {
+    name: 'Peter Obi',
+    image: 'https://via.placeholder.com/150', // Replace with actual image URL
+    dateOfBirth: 'July 19, 1961',
+    politicalParty: 'Labour Party (LP)',
+    notableAchievements: [
+      'Governor of Anambra State from 2006 to 2014',
+      'Recognized for prudent economic management',
+      'Known for anti-corruption stance'
+    ],
+    description: 'Peter Obi is a Nigerian politician and businessman who served as the governor of Anambra State. He is known for his prudent economic management and anti-corruption stance.'
+  }
+];
 
-  const handleVote = (id) => {
-    setVotes((prevVotes) =>
-      prevVotes.map((candidate) =>
-        candidate.id === id
-          ? { ...candidate, voteCount: candidate.voteCount }
-          : candidate
-      )
-    );
-    toast.success("Candidate choosing Successfully");
-    setTimeout(() => {
-      navigate("/candidate");
-    }, 4000);
-    setSelectedCandidate(id);
-    const selectedCandidate = votes.find((candidate) => candidate.id === id);
-    console.log(selectedCandidate);
-    const allData = {
-      partyName: selectedCandidate.partyName,
-      candidate: selectedCandidate.candidateName,
-      votersCode: user.passKey,
-      votersName: user.name,
-    };
-    console.log(allData);
-    axios
-    .post("", { voteDetails: allData })
-    .then((res) => {
-      console.log("success", res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  };
-  return (
-    <>
-      <div>
-        <div className=" container-fluid px-0 mt-1">
-          <img
-            className="col-12 position-relative"
-            src="https://img.freepik.com/free-photo/closeup-shot-waving-flag-nigeria-with-interesting-textures_181624-15997.jpg?t=st=1719243259~exp=1719246859~hmac=afb8d0dda208370feab0df6b877a80dbe74ac4180900957946b788bf81cf0a96&w=740"
-            alt=""
-          />
-          <div
-            style={{
-              position: "absolute",
-              top: "0",
-              left: "0",
-              right: "0",
-              backgroundColor: "rgba(255, 255, 255, 0.7)",
-            }}
-            className="mt-5 px-3 py-4 col-md-9 shadow rounded-3 mx-auto pb-3"
-          >
-            <h5 className="text-center py-3 py-md-0 mt-2 mt-md-0 text-success">
-              CHOOSE YOUR VOTE
-            </h5>
-            {votes.map((item, i) => (
-              <div key={i} className="mt-3 rounded shadow px-2 py-2">
-                <div className="d-md-flex justify-content-between">
-                  <div className="">
-                    <img
-                      className="candidate-h shadow rounded"
-                      src={item.partyImg}
-                      alt=""
-                    />
-                  </div>
-                  <div className="mt-2 mt-md-0">
-                    <p>
-                      Candidate id: <b className="fw-bold">{item.id}</b>
-                    </p>
-                    <p>
-                      Candidate Name
-                      <b className="fw-bold">{item.candidateName}</b>
-                    </p>
-                    <p>
-                      Party: <b className="fw-bold">{item.partyName}</b>
-                    </p>
-                    <button
-                      className="btn btn-success"
-                      onClick={() => handleVote(item.id)}
-                    >
-                      Vote for {item.partyName}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+const CandidateCard = ({ candidate }) => (
+  <div className="col-md-6 col-lg-4 mb-4">
+    <div className="card">
+      <img
+        src={candidate.image}
+        className="card-img-top"
+        alt={`${candidate.name}'s image`}
+        style={{ width: '100%', height: 'auto' }}
+      />
+      <div className="card-body">
+        <h5 className="card-title">{candidate.name}</h5>
+        <p className="card-text"><strong>Date of Birth:</strong> {candidate.dateOfBirth}</p>
+        <p className="card-text"><strong>Political Party:</strong> {candidate.politicalParty}</p>
+        <p className="card-text"><strong>Notable Achievements:</strong></p>
+        <ul>
+          {candidate.notableAchievements.map((achievement, index) => (
+            <li key={index}>{achievement}</li>
+          ))}
+        </ul>
+        <p className="card-text">{candidate.description}</p>
       </div>
-    </>
+    </div>
+  </div>
+);
+
+const Candidates = () => {
+  return (
+    <div className="container">
+      <h1 className="my-4">Candidates</h1>
+      <div className="row">
+        {candidates.map(candidate => (
+          <CandidateCard key={candidate.name} candidate={candidate} />
+        ))}
+      </div>
+    </div>
   );
 };
 
-export default Dashboard;
+export default Candidates;
