@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/HomePage";
 import Userinfo from "./pages/Userinfo";
 import ProfilePage from "./pages/ProfilePage";
+import VotingResults from "./pages/VotingResults";
 
 function App() {
   return (
@@ -36,10 +37,10 @@ function App() {
         <Route element={<Dashlayout />}>
           {/* Corrected this line */}
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="user/info" element={<Userinfo/>}/>
+          <Route path="user/info" element={<Userinfo />} />
           <Route path="/candidate" element={<Candidates />} />
-          <Route path="/profilepage" element={<ProfilePage/>} />
-
+          <Route path="voting/results" element={<VotingResults />} />
+          <Route path="/profilepage" element={<ProfilePage />} />
         </Route>
       </Routes>
     </>
