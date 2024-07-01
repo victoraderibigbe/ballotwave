@@ -49,14 +49,8 @@ const DashNav = () => {
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link class="nav-link" href="#">
+                  <Link class="nav-link" to="/dashboard">
                     Vote Now
-                    <hr />
-                  </Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/candidate">
-                    Candidates
                     <hr />
                   </Link>
                 </li>
