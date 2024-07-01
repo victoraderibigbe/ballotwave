@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 // or via CommonJS
 const Dashboard = () => {
   const navigate = useNavigate();
-  // const Swal = require("sweetalert2");
   const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
