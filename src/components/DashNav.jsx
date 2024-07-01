@@ -60,6 +60,12 @@ const DashNav = () => {
                     <hr />
                   </Link>
                 </li>
+<li class="nav-item">
+                  <Link class="nav-link" to="/profilepage">
+                    Profile
+                    <hr />
+                  </Link>
+                </li>
                 <li class="nav-item fixed-bottom text-end px-3 ">
                   <Link class="text-danger nav-link" href="#">
                     Log-Out
