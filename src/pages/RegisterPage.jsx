@@ -25,28 +25,50 @@ const RegisterPage = () => {
         .required("userId is required"),
     }),
 
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       const code = Number(values.userId);
       console.log(code);
-      axios
-        .post(url, { code })
-        .then((response) => {
-          console.log(response);
-          const userData = response.data.findUserWithCode;
-          if (userData) {
-            localStorage.setItem("user", JSON.stringify(userData));
-            setIsLoading(true);
-            setTimeout(() => {
-              setIsLoading(false);
-              toast.success("voter's id verified successfully");
-              navigate("/user/info");
-            }, 5000);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error("Invalid voter's id");
-        });
+
+      try {
+        const response = await axios.post(url, { code });
+        console.log(response);
+
+        const userData = response.data.findUserWithCode;
+        if (userData) {
+          localStorage.setItem("user", JSON.stringify(userData));
+          setIsLoading(true);
+          setTimeout(() => {
+            setIsLoading(false);
+            toast.success("Voter's ID verified successfully");
+            navigate("/user/info");
+          }, 5000);
+        } else {
+          setIsLoading(true);
+          setTimeout(() => {
+            setIsLoading(false);
+          toast.error(response.data.message);
+          }, 5000);
+        }
+      } catch (error) {
+        console.log(error);
+        if (error.response) {
+          const errorMessage =
+            error.response.data.message || "Invalid voter's ID";
+          setIsLoading(true);
+          setTimeout(() => {
+            setIsLoading(false);
+            toast.error(errorMessage);
+          }, 5000);
+        } else if (error.request) {
+          setIsLoading(true);
+          setTimeout(() => {
+            setIsLoading(false);
+            toast.error("No response from server. Please try again later.");
+          }, 5000);
+        } else {
+          toast.error("An unexpected error occurred. Please try again.");
+        }
+      }
     },
   });
 
