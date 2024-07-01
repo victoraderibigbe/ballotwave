@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 // or via CommonJS
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [selectedCandidate, setSelectedCandidate] = useState(null);
+  // const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
   // const url = "https://ballotwave-api.vercel.app/voters/countVote";
@@ -311,7 +311,6 @@ const Dashboard = () => {
         </div>
       </div>
     </>
-  );
+);
 };
-
 export default Dashboard;
