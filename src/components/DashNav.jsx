@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const DashNav = () => {
   return (
@@ -13,20 +13,18 @@ const DashNav = () => {
               alt=""
             />
             <Link className="navbar-brand fw-bold fs-4" to="/">
-              BallotWave
+              Ballot|<span className="text-black-50">Wave</span>
             </Link>
           </div>
-
-          <button
-            class="navbar-toggler"
+          <span
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar"
             aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+            class="navbar-toggler-icon"
+          ></span>
+
           <div
             class="offcanvas offcanvas-end"
             tabindex="-1"
@@ -51,22 +49,20 @@ const DashNav = () => {
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link class="nav-link" href="#">
+                  <Link class="nav-link" to="/dashboard">
                     Vote Now
                     <hr />
                   </Link>
                 </li>
-
-                <li class="nav-item" to="">
-                  <Link class="nav-link" to="/profilepage">
-                    Profile
+                <li class="nav-item">
+                  <Link class="nav-link" to="/voting/results">
+                    Voting Result
                     <hr />
                   </Link>
                 </li>
-
-                <li class="nav-item">
-                  <Link class="nav-link" to="/candidate">
-                    Candidates
+<li class="nav-item">
+                  <Link class="nav-link" to="/profilepage">
+                    Profile
                     <hr />
                   </Link>
                 </li>
@@ -81,7 +77,7 @@ const DashNav = () => {
         </div>
       </nav>
     </>
-  )
-}
+  );
+};
 
-export default DashNav
+export default DashNav;

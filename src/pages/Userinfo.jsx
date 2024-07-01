@@ -75,7 +75,7 @@ const Userinfo = () => {
           src="https://img.freepik.com/free-photo/closeup-shot-waving-flag-nigeria-with-interesting-textures_181624-15997.jpg?t=st=1719243259~exp=1719246859~hmac=afb8d0dda208370feab0df6b877a80dbe74ac4180900957946b788bf81cf0a96&w=740"
           alt=""
         />
-        <div className="col-md-8" style={{ display: "flex" }}>
+        <div className="col-md-8 col-11" style={{ display: "flex" }}>
           <div
             style={{
               backgroundColor: "rgba(255, 255, 255, 0.7)",
