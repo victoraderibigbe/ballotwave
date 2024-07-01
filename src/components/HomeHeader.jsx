@@ -3,9 +3,9 @@ import { Link, NavLink } from "react-router-dom";
 const HomeHeader = () => {
   const navItems = [
     { title: "Home", path: "/" },
-    { title: "Sign Up", path: "/register" },
-    { title: "Sign In", path: "/login" },
-    { title: "Dashboard", path: "/vote" },
+    { title: "Register", path: "/register" },
+    // { title: "Sign In", path: "/login" },
+    // { title: "Dashboard", path: "/vote" },
   ];
 
   return (
@@ -18,8 +18,8 @@ const HomeHeader = () => {
             className="logo-height"
             alt=""
           />
-          <Link className="navbar-brand fs-4" to="/">
-            BallotWave
+          <Link className="navbar-brand fs-5" to="/">
+            Ballot|<span className="text-black-50">Wave</span>
           </Link>
           </div>
           <button

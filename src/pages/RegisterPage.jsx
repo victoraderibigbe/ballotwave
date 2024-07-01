@@ -27,8 +27,6 @@ const RegisterPage = () => {
 
     onSubmit: async (values) => {
       const code = Number(values.userId);
-      console.log(code);
-
       try {
         const response = await axios.post(url, { code });
         console.log(response);
@@ -41,13 +39,13 @@ const RegisterPage = () => {
             setIsLoading(false);
             toast.success("Voter's ID verified successfully");
             navigate("/user/info");
-          }, 5000);
+          }, 3000);
         } else {
           setIsLoading(true);
           setTimeout(() => {
             setIsLoading(false);
           toast.error(response.data.message);
-          }, 5000);
+          }, 3000);
         }
       } catch (error) {
         console.log(error);
@@ -58,13 +56,13 @@ const RegisterPage = () => {
           setTimeout(() => {
             setIsLoading(false);
             toast.error(errorMessage);
-          }, 5000);
+          }, 3000);
         } else if (error.request) {
           setIsLoading(true);
           setTimeout(() => {
             setIsLoading(false);
             toast.error("No response from server. Please try again later.");
-          }, 5000);
+          }, 3000);
         } else {
           toast.error("An unexpected error occurred. Please try again.");
         }

@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/HomePage";
 import Userinfo from "./pages/Userinfo";
 import SuccessPage from "./pages/SuccessPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -39,6 +40,8 @@ function App() {
           <Route path="user/info" element={<Userinfo/>}/>
           <Route path="/candidate" element={<Candidates />} />
           <Route path="/success" element={<SuccessPage />} />
+          <Route path="/profilepage" element={<ProfilePage/>} />
+
         </Route>
       </Routes>
     </>

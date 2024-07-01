@@ -4,13 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Tooltip } from "bootstrap";
 import { SpinnerCircularFixed } from "spinners-react";
+import Swal from "sweetalert2";
 
+// or via CommonJS
 const Dashboard = () => {
   const navigate = useNavigate();
   // const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
-  let url = "https://ballotwave-api.vercel.app/voters/voteNow";
+  // const url = "https://ballotwave-api.vercel.app/voters/countVote";
+  const url = "https://ballotwave-api.vercel.app/voters/voteNow";
   const [votes, setVotes] = useState([
     {
       id: 1,
@@ -75,6 +78,7 @@ const Dashboard = () => {
       voteCount: 0,
     },
   ]);
+
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -88,38 +92,76 @@ const Dashboard = () => {
   }, []);
 
   const handleVote = async (id) => {
-    setIsLoading(true);
-    try {
-      const selectedCandidate = votes.find((candidate) => candidate.id === id);
-      console.log(selectedCandidate);
-      const allData = {
-        partyName: selectedCandidate.partyName,
-        candidate: selectedCandidate.candidateName,
-        votersCode: user.passKey,
-        votersName: user.name,
-      };
-      console.log(allData);
+    const selectedCandidate = votes.find((candidate) => candidate.id === id);
 
-      await axios.post(url, allData);
+    Swal.fire({
+      title: `Do you want to vote for ${selectedCandidate.candidateName}?`,
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "Cancel",
+      reverseButtons: true,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        setIsLoading(true);
+        try {
+          const allData = {
+            partyName: selectedCandidate.partyName,
+            candidateName: selectedCandidate.candidateName,
+            votersCode: user.passKey,
+            votersName: user.name,
+          };
 
-      setVotes((prevVotes) =>
-        prevVotes.map((candidate) =>
-          candidate.id === id
-            ? { ...candidate, voteCount: candidate.voteCount }
-            : candidate
-        )
-      );
+          const response = await axios.post(url, allData);
+          console.log(response);
 
-      // setSelectedCandidate(id);
-      setTimeout(() => {
-        toast.success("Candidate chosen successfully");
-        navigate("/candidate");
-      }, 3000);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
+          setVotes((prevVotes) =>
+            prevVotes.map((candidate) =>
+              candidate.id === id
+                ? { ...candidate, voteCount: candidate.voteCount + 1 }
+                : candidate
+            )
+          );
+
+          setTimeout(() => {
+            toast.success("Candidate chosen successfully");
+            navigate("/voting/results", {
+              state: { selectedCandidate, user, votes },
+            });
+          }, 3000);
+        } catch (error) {
+          if (error.response) {
+            if (error.response.status === 401) {
+              Swal.fire({
+                icon: "error",
+                title: "Unauthorized",
+                text: "Your vote has been counted and cannot vote again",
+              });
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: error.response.data.message || "An error occurred",
+              });
+            }
+          } else if (error.request) {
+            Swal.fire({
+              icon: "error",
+              title: "Network Error",
+              text: "No response from server. Please check your internet connection.",
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "An error occurred. Please try again.",
+            });
+          }
+        } finally {
+          setIsLoading(false);
+        }
+      }
+    });
   };
 
   return (
@@ -150,7 +192,7 @@ const Dashboard = () => {
         </div>
       )}
       <div>
-        <div className=" container-fluid px-0 mt-4">
+        <div className="container-fluid px-0 mt-4">
           <div className="bg-img">
             <div
               style={{
@@ -169,7 +211,7 @@ const Dashboard = () => {
                 {votes.map((item, i) => (
                   <div
                     key={i}
-                    className="mt-3 rounded bg-white col-md-3  shadow px-2 py-2"
+                    className="mt-3 rounded bg-white col-md-3 shadow px-2 py-2"
                   >
                     <div className="">
                       <div className="mx-auto">
