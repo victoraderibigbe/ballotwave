@@ -9,6 +9,7 @@ import { ToastContainer, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/HomePage";
 import Userinfo from "./pages/Userinfo";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="user/info" element={<Userinfo/>}/>
           <Route path="/candidate" element={<Candidates />} />
+          <Route path="/profilepage" element={<ProfilePage/>} />
+
         </Route>
       </Routes>
     </>
