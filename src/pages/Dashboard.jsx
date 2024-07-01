@@ -100,7 +100,7 @@ const Dashboard = () => {
       showCancelButton: true,
       confirmButtonText: "Yes",
       cancelButtonText: "Cancel",
-      reverseButtons: true,
+    
     }).then(async (result) => {
       if (result.isConfirmed) {
         setIsLoading(true);
@@ -204,7 +204,7 @@ const Dashboard = () => {
               }}
               className="mt-5 px-3 py-4 shadow rounded-3 mx-auto pb-3"
             >
-              <h5 className="text-center fw-bold py-3 py-md-0 mt-2 mt-md-0 text-success">
+              <h5 className="text-center fw-bold py-3 py-md-0 mt-2 mt-md-4 text-success">
                 CHOOSE THE CANDIDATE OF YOUR CHOICE
               </h5>
               <div className="d-md-flex justify-content-between">

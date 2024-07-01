@@ -39,7 +39,7 @@ const RegisterPage = () => {
             setIsLoading(false);
             toast.success("Voter's ID verified successfully");
             navigate("/user/info");
-          }, 3000);
+          }, 1000);
         } else {
           setIsLoading(true);
           setTimeout(() => {
@@ -56,7 +56,7 @@ const RegisterPage = () => {
           setTimeout(() => {
             setIsLoading(false);
             toast.error(errorMessage);
-          }, 3000);
+          }, 1000);
         } else if (error.request) {
           setIsLoading(true);
           setTimeout(() => {
