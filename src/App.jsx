@@ -42,10 +42,8 @@ function App() {
           <Route path="user/info" element={<Userinfo />} />
           <Route path="/candidate" element={<Candidates />} />
           <Route path="/success" element={<SuccessPage />} />
-          <Route path="/profilepage" element={<ProfilePage/>} />
-
           <Route path="voting/results" element={<VotingResults />} />
-          <Route path="/profilepage" element={<ProfilePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
 
         {/* Error route */}

@@ -4,7 +4,7 @@ import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min";
 
 const DashNav = () => {
   const offcanvasRef = useRef(null);
-   const navigate= useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     if (offcanvasRef.current) {
       const offcanvasElement = offcanvasRef.current;
@@ -14,15 +14,17 @@ const DashNav = () => {
 
   const handleLinkClick = () => {
     if (offcanvasRef.current) {
-      const offcanvasElement = bootstrap.Offcanvas.getInstance(offcanvasRef.current);
+      const offcanvasElement = bootstrap.Offcanvas.getInstance(
+        offcanvasRef.current
+      );
       offcanvasElement.hide();
     }
   };
   const handleLogout = () => {
-    localStorage.removeItem('name');
-    localStorage.removeItem('passKey');
+    localStorage.removeItem("name");
+    localStorage.removeItem("passKey");
     handleLinkClick();
-    navigate('/register');
+    navigate("/register");
   };
 
   return (
@@ -39,12 +41,14 @@ const DashNav = () => {
               Ballot|<span className="text-black-50">Wave</span>
             </Link>
           </div>
-          <span type="button"
+          <span
+            type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar"
             aria-label="Toggle navigation"
-            className="navbar-toggler-icon"></span>
+            className="navbar-toggler-icon"
+          ></span>
           <div
             className="offcanvas offcanvas-end"
             tabIndex="-1"
@@ -64,31 +68,62 @@ const DashNav = () => {
             <div style={{ marginTop: "-40px" }} className="offcanvas-body">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item">
-                  <Link className="nav-link" aria-current="page" to="/" onClick={handleLinkClick}>
+                  <Link
+                    className="nav-link"
+                    aria-current="page"
+                    to="/"
+                    onClick={handleLinkClick}
+                  >
                     Home
                     <hr />
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/dashboard" onClick={handleLinkClick}>
+                  <Link
+                    className="nav-link"
+                    to="/dashboard"
+                    onClick={handleLinkClick}
+                  >
                     Vote Now
                     <hr />
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/voting/results" onClick={handleLinkClick}>
+                  <Link
+                    className="nav-link"
+                    to="/voting/results"
+                    onClick={handleLinkClick}
+                  >
                     Voting Result
                     <hr />
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/profilepage" onClick={handleLinkClick}>
+                  <Link
+                    className="nav-link"
+                    to="/candidate"
+                    onClick={handleLinkClick}
+                  >
+                    Candidates
+                    <hr />
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    to="/profile"
+                    onClick={handleLinkClick}
+                  >
                     Profile
                     <hr />
                   </Link>
                 </li>
                 <li className="nav-item fixed-bottom  text-end px-3">
-                  <div style={{cursor:"pointer"}} className="nav-link  text-danger py-2 px-4 rounded" onClick={handleLogout}>
+                  <div
+                    style={{ cursor: "pointer" }}
+                    className="nav-link  text-danger py-2 px-4 rounded"
+                    onClick={handleLogout}
+                  >
                     Log-Out
                   </div>
                 </li>
