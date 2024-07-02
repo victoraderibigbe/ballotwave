@@ -12,6 +12,7 @@ import Userinfo from "./pages/Userinfo";
 import SuccessPage from "./pages/SuccessPage";
 import ProfilePage from "./pages/ProfilePage";
 import VotingResults from "./pages/VotingResults";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   return (
@@ -46,6 +47,9 @@ function App() {
           <Route path="voting/results" element={<VotingResults />} />
           <Route path="/profilepage" element={<ProfilePage />} />
         </Route>
+
+        {/* Error route */}
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   );
