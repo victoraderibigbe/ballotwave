@@ -1,0 +1,30 @@
+.error-page {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .error-page img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .error-page h1 {
+    font-size: 3rem;
+    color: #ff4040;
+  }
+  
+  .error-page h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .error-page p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .error-page .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  
