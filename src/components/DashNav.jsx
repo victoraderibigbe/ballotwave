@@ -1,11 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min";
 
 const DashNav = () => {
+  const offcanvasRef = useRef(null);
+   const navigate= useNavigate();
+  useEffect(() => {
+    if (offcanvasRef.current) {
+      const offcanvasElement = offcanvasRef.current;
+      new bootstrap.Offcanvas(offcanvasElement);
+    }
+  }, []);
+
+  const handleLinkClick = () => {
+    if (offcanvasRef.current) {
+      const offcanvasElement = bootstrap.Offcanvas.getInstance(offcanvasRef.current);
+      offcanvasElement.hide();
+    }
+  };
+  const handleLogout = () => {
+    localStorage.removeItem('name');
+    localStorage.removeItem('passKey');
+    handleLinkClick();
+    navigate('/register');
+  };
+
   return (
     <>
-      <nav class="navbar bg-body-tertiary px-0 shadow fixed-top">
-        <div class="container-fluid">
+      <nav className="navbar bg-body-tertiary px-0 shadow fixed-top">
+        <div className="container-fluid">
           <div>
             <img
               src="https://img.freepik.com/premium-vector/modern-unique-hexagon-letter-bw-logo-design-template-elegant-initial-bw-letter-logo-concept_1101554-432.jpg?w=740"
@@ -16,60 +39,58 @@ const DashNav = () => {
               Ballot|<span className="text-black-50">Wave</span>
             </Link>
           </div>
-          <span
-            type="button"
+          <span type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar"
             aria-label="Toggle navigation"
-            class="navbar-toggler-icon"
-          ></span>
-
+            className="navbar-toggler-icon"></span>
           <div
-            class="offcanvas offcanvas-end"
-            tabindex="-1"
+            className="offcanvas offcanvas-end"
+            tabIndex="-1"
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
+            ref={offcanvasRef}
           >
-            <div class="offcanvas-header">
+            <div className="offcanvas-header">
               <p className="navbar-brand fw-bold fs-5">BallotWave</p>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="offcanvas"
                 aria-label="Close"
               ></button>
             </div>
-            <div style={{ marginTop: "-40px" }} class=" offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <Link class="nav-link" aria-current="page" to="/">
+            <div style={{ marginTop: "-40px" }} className="offcanvas-body">
+              <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li className="nav-item">
+                  <Link className="nav-link" aria-current="page" to="/" onClick={handleLinkClick}>
                     Home
                     <hr />
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/dashboard">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/dashboard" onClick={handleLinkClick}>
                     Vote Now
                     <hr />
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/voting/results">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/voting/results" onClick={handleLinkClick}>
                     Voting Result
                     <hr />
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/profilepage">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/profilepage" onClick={handleLinkClick}>
                     Profile
                     <hr />
                   </Link>
                 </li>
-                <li class="nav-item fixed-bottom text-end px-3 ">
-                  <Link class="text-danger nav-link" href="#">
+                <li className="nav-item fixed-bottom  text-end px-3">
+                  <div style={{cursor:"pointer"}} className="nav-link  text-danger py-2 px-4 rounded" onClick={handleLogout}>
                     Log-Out
-                  </Link>
+                  </div>
                 </li>
               </ul>
             </div>

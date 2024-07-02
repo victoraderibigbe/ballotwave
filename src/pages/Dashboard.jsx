@@ -202,7 +202,7 @@ const Dashboard = () => {
                 right: "0",
                 backgroundColor: "rgba(255, 255, 255, 0.7)",
               }}
-              className="mt-5 px-3 py-4 shadow rounded-3 mx-auto pb-3"
+              className="mt-5 px-3 py-4 shadow mx-auto pb-3"
             >
               <h5 className="text-center fw-bold py-3 py-md-0 mt-2 mt-md-4 text-success">
                 CHOOSE THE CANDIDATE OF YOUR CHOICE

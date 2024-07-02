@@ -16,18 +16,20 @@ const HomePage = () => {
   return (
     <>
       <div className="container-fluid mt-top px-0">
-        <div
-          data-aos="zoom-in"
-          className="border border-light text-center mx-auto rounded get-position col-md-4 col-12 pt-5"
-        >
-          <p className="text-light fs-3 fw-bold">Your Vote Counts!</p>
-          <button className="btn py-2 px-5">
-            <Link className="text-decoration-none text-white" to="/register">
-              VOTE NOW!
-            </Link>
-          </button>
-          <p className="text-light mt-2">JUNE 10 - JUNE 15</p>
-        </div>
+      <div className="px-2 px-md-4">
+      <div
+        data-aos="zoom-in"
+        className="border border-light text-center mx-auto rounded get-position col-md-4 col-12 pt-5"
+      >
+        <p className="text-light fs-3 fw-bold">Your Vote Counts!</p>
+        <button className="btn py-2 px-5">
+          <Link className="text-decoration-none text-white" to="/register">
+            VOTE NOW!
+          </Link>
+        </button>
+        <p className="text-light mt-2">JUNE 10 - JUNE 15</p>
+      </div>
+    </div>
         <div className="col-12 img-h"></div>
         <section className="position-top">
           <div className="px-md-5 px-4 d-md-flex justify-content-around mb-4 mx-auto">

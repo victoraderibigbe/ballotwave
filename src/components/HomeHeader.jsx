@@ -4,8 +4,7 @@ const HomeHeader = () => {
   const navItems = [
     { title: "Home", path: "/" },
     { title: "Register", path: "/register" },
-    // { title: "Sign In", path: "/login" },
-    // { title: "Dashboard", path: "/vote" },
+    { title: "Dashboard", path: "/dashboard" },
   ];
 
   return (
@@ -51,6 +50,7 @@ const HomeHeader = () => {
           </div>
         </div>
       </nav>
+      
     </>
   );
 };
