@@ -2,10 +2,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { SpinnerCircularFixed } from "spinners-react";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 const RegisterPage = () => {
   const url = "https://ballotwave-api.vercel.app/voters/validate";
@@ -44,7 +45,7 @@ const RegisterPage = () => {
           setIsLoading(true);
           setTimeout(() => {
             setIsLoading(false);
-          toast.error(response.data.message);
+            toast.error(response.data.message);
           }, 3000);
         }
       } catch (error) {
@@ -111,7 +112,7 @@ const RegisterPage = () => {
         <div className="container-fluid d-flex px-md-5 px-4 get-bg align-items-center justify-content-center vh-100">
           <div className="row py-5 border col-md-8 px-1 bg-white rounded">
             <div className="col-md-6 bg-white mt-2">
-              <p className="fw-bold text-success">
+              <p className="fw-bold text-success text-center">
                 ENTER A VALID VOTER'S ID, TO GET STARTED
               </p>
               <div className="col-md-10 px-3 py-3 mx-auto">
@@ -151,6 +152,13 @@ const RegisterPage = () => {
                   </div>
                 </form>
               </div>
+              <Link
+                to="/"
+                className="d-flex align-items-center justify-content-center fs-6 text-success text-decoration-none"
+              >
+                <IoIosArrowRoundBack size={15} />
+                Back Home
+              </Link>
             </div>
             <div className="col-md-6 mt-2">
               <img
